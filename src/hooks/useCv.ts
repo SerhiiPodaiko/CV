@@ -13,7 +13,14 @@ export function useCv(): UseCvReturn {
   const [loading, setLoading] = useState(true)
 
   const downloadPdf = useCallback(async () => {
-    console.log('downloadPdf')
+    const pdfUrl = 'https://docs.google.com/document/d/1470u2ftJGjrfR2dNC-QbHpp-_fcuru8w/export?format=pdf'
+
+    const link = document.createElement('a')
+    link.href = pdfUrl
+    link.setAttribute('download', 'Serhii_Podaiko_Frontend_Engineer_CV.pdf')
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
   }, [])
 
   useEffect(() => {
